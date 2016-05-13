@@ -1,8 +1,8 @@
 FROM alpine:3.2
 MAINTAINER Bryan Konowitz <bryan@kono.sh>
 
-ENV REFRESHED_AT 2015-12-02
-ENV ELIXIR_VERSION 1.1.1
+ENV REFRESHED_AT 2016-05-13
+ENV ELIXIR_VERSION 1.2.5
 
 # Set the locale
 ENV LANG C.UTF-8
@@ -13,7 +13,7 @@ RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories
     echo 'http://dl-4.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories && \
     apk --update add ncurses-libs erlang-crypto erlang-syntax-tools erlang-xmerl && \
     apk --update add --virtual build-dependencies wget ca-certificates && \
-    wget https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/Precompiled.zip && \
+    wget --no-check-certificate https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/Precompiled.zip && \
     mkdir -p /opt/elixir-${ELIXIR_VERSION}/ && \
     unzip Precompiled.zip -d /opt/elixir-${ELIXIR_VERSION}/ && \
     rm Precompiled.zip && \
